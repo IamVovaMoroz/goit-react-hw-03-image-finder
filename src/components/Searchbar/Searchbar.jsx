@@ -2,6 +2,9 @@
 import React, { Component } from 'react';
 // import { ImSearch } from 'react-icons/im';
 import { toast } from 'react-toastify';
+import PropTypes from 'prop-types';
+// стили 
+import { Form, Button, Input, Header } from './Searchbar.styled';
 
 // const styles = { form: { marginBottom: 20 } };
 
@@ -37,25 +40,31 @@ class Searchbar extends Component {
 
   render() {
     return (
-      <header className="searchbar">
-        <form className="form" onSubmit={this.handleSubmit}>
-          <button type="submit" className="button">
+      <Header className="searchbar">
+        <Form className="form" onSubmit={this.handleSubmit}>
+          <Button type="submit" className="button">
             <span className="button-label">Search</span>
-          </button>
+          </Button>
 
-          <input
+          <Input
             className="input"
             type="text"
+            name="query"
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"
             value={this.state.query}
             onChange={this.handleChange}
           />
-        </form>
-      </header>
+        </Form>
+      </Header>
     );
   }
 }
 
 export default Searchbar;
+
+//  propTypes
+Searchbar.propTypes = {
+    onSubmit: PropTypes.func.isRequired,
+  };
