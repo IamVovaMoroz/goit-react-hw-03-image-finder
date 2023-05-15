@@ -33,7 +33,7 @@ export class App extends Component {
       >
         <Searchbar onSubmit={this.handleFormSubmit} />
         <ToastContainer autoClose={3000} />
-        <Loader />
+        {/* <Loader /> */}
       </div>
     );
   }
