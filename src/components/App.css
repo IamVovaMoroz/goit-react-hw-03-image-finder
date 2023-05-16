@@ -1,0 +1,12 @@
+.button-container {
+    text-align: center; /* Выравнивание по центру */
+    margin: 20px; /* Отступ сверху */
+  }
+
+  .App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
