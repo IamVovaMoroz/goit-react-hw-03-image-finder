@@ -144,7 +144,7 @@
 
 import React, { Component } from 'react';
 import Searchbar from "./Searchbar/Searchbar";
-import { ToastContainer } from 'react-toastify';
+
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from './Loader/Loader';
 import Button from './Button/Button';
@@ -173,12 +173,15 @@ class App extends Component {
     // Получаем значение из поля ввода и записываем в state
         this.setState({ query });
          // Если поле ввода пустое, выводим сообщение и выходим из функции
-    if (query.trim() === '') {
-      Notiflix.Notify.info('You cannot search by empty field, try again.');
-      return;
-    } else {
+//  if (query.trim() === '') {
+//         toast.error("Введите поисковый запрос")
+//         return;
+
+//     }
+if (query.trim() !== '') {
       try {
           // Устанавливаем статус "pending", если что то ищем,  процесс загрузки ожидание
+          console.log('pending')
         this.setState({ status: 'pending' });
         // Запрашиваем изображения с сервера
        // Записываем результаты, полученные с сервера, в переменные totalHits и hits.
@@ -188,6 +191,7 @@ class App extends Component {
         if (hits.length < 1) {
             // Если не найдено изображений, устанавливаем статус "idle" и выводим сообщение об ошибке
           this.setState({ status: 'idle' });
+        
           Notiflix.Notify.failure(
             'Sorry, there are no images matching your search query. Please try again.'
           );
@@ -262,7 +266,7 @@ class App extends Component {
         <div className="App">
           <Searchbar onSubmit={this.handleSubmit} />
           <ImageGallery page={page} items={this.state.items} />
-          <ToastContainer autoClose={3000} />
+        
           {/* если кол-во результатов больше 12 и если кол-вщ доступных изображений больше выведенных - рендерим Button  */}
           {totalHits > 12 && totalHits > items.length && (
             <Button onClick={this.onNextPage} />

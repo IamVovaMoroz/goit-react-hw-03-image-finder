@@ -1,0 +1,12 @@
+.ImageGalleryItem {
+    position: relative;
+    list-style: none;
+  }
+  
+  .ImageGalleryItem-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+  

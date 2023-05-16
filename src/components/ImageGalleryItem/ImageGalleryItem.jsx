@@ -2,14 +2,33 @@
 import Modal from '../Modal/Modal';
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import "./ImageGalleryItem.css"
 
 class ImageGalleryItem extends Component {
   state = {
+    //  состояния shownModal по умолчание не показываем
     shownModal: false,
   };
-  onModal = () => {
-    this.setState(({ shownModal }) => ({ shownModal: !shownModal }));
+   // Закрытие и открытие. Меняется состояние shownModal на противоположное при вызове
+   onModal = () => {
+    // Получаем предыдущее состояние shownModal из this.state
+    const { shownModal } = this.state;
+  
+    // Противоположное значение shownModal записываем в переменнную
+    const updatedShownModal = !shownModal;
+  
+    // меняем state на противоположное
+    this.setState({ shownModal: updatedShownModal });
   };
+
+//   onModal = () => {
+//     this.setState(prevState => ({
+//       shownModal: !prevState.shownModal
+//     }));
+//   };
+
+
+
   render() {
     const { item } = this.props;
     const { webformatURL } = item;

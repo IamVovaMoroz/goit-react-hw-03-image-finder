@@ -1,11 +1,11 @@
 
 import React, { Component } from 'react';
 // import { ImSearch } from 'react-icons/im';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 import PropTypes from 'prop-types';
 // стили 
 import { Form, Button, Input, Header } from './Searchbar.styled';
-
+import Notiflix from 'notiflix';
 // const styles = { form: { marginBottom: 20 } };
 
 class Searchbar extends Component {
@@ -30,7 +30,8 @@ class Searchbar extends Component {
     }
      // Условие, чтобы не отправлялась пустая строка в запросах. Ставим return и выходит с кода при этом условии
     if (query.trim() === '') {
-        toast.error("Введите поисковый запрос")
+        Notiflix.Notify.info('Enter keywords to search.');
+        console.log("там")
         return;
 
     }
